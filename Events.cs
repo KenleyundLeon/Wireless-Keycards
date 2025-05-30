@@ -1,7 +1,7 @@
 using Interactables.Interobjects.DoorUtils;
 using LabApi.Events.Arguments.PlayerEvents;
 using LabApi.Events.CustomHandlers;
-using KcItem = InventorySystem.Items.Keycards.KeycardItem;
+using InventorySystem.Items.Keycards;
 
 namespace Wireless_Keycards;
 public class WirelessCard : CustomEventsHandler
@@ -17,7 +17,7 @@ public class WirelessCard : CustomEventsHandler
 
         foreach (var item in ev.Player.Inventory.UserInventory.Items.Values)
         {
-            if (item is not KcItem keycard) continue;
+            if (item is not KeycardItem keycard) continue;
 
             var permissions = keycard.GetPermissions(ev.Player as IDoorPermissionRequester);
             if (ev.Door.Base.RequiredPermissions.CheckPermissions(permissions))
@@ -33,7 +33,7 @@ public class WirelessCard : CustomEventsHandler
     {
         foreach (var item in ev.Player.Inventory.UserInventory.Items.Values)
         {
-            if (item is not KcItem keycard) continue;
+            if (item is not KeycardItem keycard) continue;
             if (keycard.GetPermissions(ev.Player as IDoorPermissionRequester).HasFlagAll(ev.Chamber.RequiredPermissions))
             {
                 ev.IsAllowed = true;
@@ -46,7 +46,7 @@ public class WirelessCard : CustomEventsHandler
     {
         foreach (var item in ev.Player.Inventory.UserInventory.Items.Values)
         {
-            if (item is not KcItem keycard) continue;
+            if (item is not KeycardItem keycard) continue;
             if (keycard.GetPermissions(ev.Player as IDoorPermissionRequester).HasFlagAll(ev.Generator.RequiredPermissions))
             {
                 ev.IsAllowed = true;
