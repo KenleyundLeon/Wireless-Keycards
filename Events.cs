@@ -1,7 +1,6 @@
 using Interactables.Interobjects.DoorUtils;
 using LabApi.Events.Arguments.PlayerEvents;
 using LabApi.Events.CustomHandlers;
-using LAPI.Configs;
 using KcItem = InventorySystem.Items.Keycards.KeycardItem;
 
 namespace Wireless_Keycards;
