@@ -1,4 +1,4 @@
-﻿namespace Wireless_Keycard;
+namespace Wireless_Keycards;
 
 public class Config
 {
