@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using LabApi.Events.CustomHandlers;
 using LabApi.Features;
 using LabApi.Features.Console;
 using LabApi.Loader.Features.Plugins;
 
-namespace Wireless_Keycard;
+namespace Wireless_Keycards;
 
 public class Main : Plugin<Config>
 {
