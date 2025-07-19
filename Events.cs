@@ -4,10 +4,11 @@ using LabApi.Events.CustomHandlers;
 using InventorySystem.Items.Keycards;
 
 namespace Wireless_Keycards;
-public class WirelessCard : CustomEventsHandler
+public class Events : CustomEventsHandler
 {
     public override void OnPlayerInteractingDoor(PlayerInteractingDoorEventArgs ev)
     {
+        if (ev.Door.IsLocked) return;
         if (ev.Door.Permissions == DoorPermissionFlags.None)
         {
             ev.IsAllowed = true;
