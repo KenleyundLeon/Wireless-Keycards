@@ -8,24 +8,28 @@ namespace Wireless_Keycards;
 
 public class Main : Plugin<Config>
 {
+    public static Main Instance { get; private set; }
     public Events events = new();
     public override string Name => "Wireless-Keycards";
     public override string Description => "Allows the usage of Wireless keycards";
     public override string Author => "Kenley M.";
-    public override Version Version => new(1, 0, 0, 0);
+    public override Version Version => new(1, 1, 6);
     public override Version RequiredApiVersion => new(LabApiProperties.CompiledVersion);
     public string githubRepo = "KenleyundLeon/Wireless-Keycards";
 
     public override void Enable()
     {
-        Logger.Info("WirelessCard Enabled.");
+        Instance = this;
+        Logger.Info("Wireless-Keycards Enabled.");
+        Logger.Info(githubRepo);
         if (!Config.Enabled) return;
         CustomHandlersManager.RegisterEventsHandler(events);
     }
 
     public override void Disable()
     {
-        Logger.Info("WirelessCard Disabled.");
+        Instance = null;
+        Logger.Info("Wireless-Keycards Disabled.");
         if (!Config.Enabled) return;
         CustomHandlersManager.UnregisterEventsHandler(events);
     }

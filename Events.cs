@@ -2,6 +2,8 @@ using Interactables.Interobjects.DoorUtils;
 using LabApi.Events.Arguments.PlayerEvents;
 using LabApi.Events.CustomHandlers;
 using InventorySystem.Items.Keycards;
+using InventorySystem.Items;
+using InventorySystem;
 
 namespace Wireless_Keycards;
 public class Events : CustomEventsHandler
@@ -16,6 +18,12 @@ public class Events : CustomEventsHandler
             return;
         }
 
+        if (ev.Player.CurrentItem != null && ev.Player.CurrentItem.Category == ItemCategory.Keycard && Main.Instance.Config.SkipIfKeycardInHand)
+            return;
+
+        if (ev.Player.Inventory?.UserInventory?.Items == null)
+            return;
+
         foreach (var item in ev.Player.Inventory.UserInventory.Items.Values)
         {
             if (item is not KeycardItem keycard) continue;
@@ -27,11 +35,27 @@ public class Events : CustomEventsHandler
                 ev.CanOpen = true;
                 return;
             }
+            else if (ev.Door.DoorName == LabApi.Features.Enums.DoorName.EzGateA || ev.Door.DoorName == LabApi.Features.Enums.DoorName.EzGateB)
+            {
+                if (item.ItemTypeId != ItemType.SurfaceAccessPass) continue;
+                if (ev.Door.IsOpened) return;
+                    ev.IsAllowed = true;
+                    ev.CanOpen = true;
+                    ev.Player.RemoveItem(item);
+                return;
+                
+            } else continue;
         }
     }
 
     public override void OnPlayerInteractingLocker(PlayerInteractingLockerEventArgs ev)
     {
+        if (ev.Player.CurrentItem != null && ev.Player.CurrentItem.Category == ItemCategory.Keycard && Main.Instance.Config.SkipIfKeycardInHand)
+            return;
+
+        if (ev.Player.Inventory?.UserInventory?.Items == null)
+            return;
+
         foreach (var item in ev.Player.Inventory.UserInventory.Items.Values)
         {
             if (item is not KeycardItem keycard) continue;
@@ -41,10 +65,18 @@ public class Events : CustomEventsHandler
                 ev.CanOpen = true;
                 return;
             }
+            else continue;
         }
     }
     public override void OnPlayerInteractingGenerator(PlayerInteractingGeneratorEventArgs ev)
     {
+        if (ev.Player.CurrentItem != null && ev.Player.CurrentItem.Category == ItemCategory.Keycard && Main.Instance.Config.SkipIfKeycardInHand)
+            return;
+
+
+        if (ev.Player.Inventory?.UserInventory?.Items == null)
+            return;
+
         foreach (var item in ev.Player.Inventory.UserInventory.Items.Values)
         {
             if (item is not KeycardItem keycard) continue;
@@ -54,6 +86,27 @@ public class Events : CustomEventsHandler
                 ev.Generator.IsUnlocked = true;
                 return;
             }
+            else continue;
+        }
+    }
+
+    public override void OnPlayerUnlockingWarheadButton(PlayerUnlockingWarheadButtonEventArgs ev)
+    {
+        if (ev.Player.CurrentItem != null && ev.Player.CurrentItem.Category == ItemCategory.Keycard && Main.Instance.Config.SkipIfKeycardInHand)
+            return;
+
+        if (ev.Player.Inventory?.UserInventory?.Items == null)
+            return;
+
+        foreach (var item in ev.Player.Inventory.UserInventory.Items.Values)
+        {
+            if (item is not KeycardItem keycard) continue;
+            if (keycard.GetPermissions(ev.Player as IDoorPermissionRequester).HasFlagAll(DoorPermissionFlags.AlphaWarhead))
+            {
+                ev.IsAllowed = true;
+                return;
+            }
+            else continue;
         }
     }
 }
