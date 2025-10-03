@@ -14,6 +14,7 @@ public class Main : Plugin<Config>
     public override string Author => "Kenley M.";
     public override Version Version => new(1, 0, 0, 0);
     public override Version RequiredApiVersion => new(LabApiProperties.CompiledVersion);
+    public string githubRepo = "KenleyundLeon/Wireless-Keycards";
 
     public override void Enable()
     {
