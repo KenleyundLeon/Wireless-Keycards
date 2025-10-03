@@ -1,2 +1,0 @@
-C:\Users\leonu\Source\Repos\Wireless-Keycards\obj\Debug\Wireless-Keycards.csproj.AssemblyReference.cache
-C:\Users\leonu\Source\Repos\Wireless-Keycards\obj\Debug\Wireless-Keycards.csproj.CoreCompileInputs.cache
