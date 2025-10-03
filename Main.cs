@@ -9,7 +9,7 @@ namespace Wireless_Keycards;
 public class Main : Plugin<Config>
 {
     public Events events = new();
-    public override string Name => "WirlessCard";
+    public override string Name => "Wireless-Keycards";
     public override string Description => "Allows the usage of Wireless keycards";
     public override string Author => "Kenley M.";
     public override Version Version => new(1, 0, 0, 0);
@@ -29,3 +29,4 @@ public class Main : Plugin<Config>
         CustomHandlersManager.UnregisterEventsHandler(events);
     }
 }
+
