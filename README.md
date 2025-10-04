@@ -1,5 +1,5 @@
 # Wireless-Keycards
-[https://image2url.com/images/1759563390122-d4824ef5-f596-4c20-9063-2c606a16971c.png](https://github.com/northwood-studios/LabAPI)
+[LabAPI](https://github.com/northwood-studios/LabAPI](https://image2url.com/images/1759563390122-d4824ef5-f596-4c20-9063-2c606a16971c.png)
 An Wireless-Keycards Plugin for SCP:SL. Powered by LabAPI
 
 ## Known Issues:
