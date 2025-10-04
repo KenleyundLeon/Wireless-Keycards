@@ -7,8 +7,7 @@ An Wireless-Keycards Plugin for SCP:SL. Powered by LabAPI
 </div>
 
 ## Known Issues:
-- Clean Code is Gold. It isn't shiny nor perfect but good enough.
-- Still in the Beta.
+- Surface Access Pass doesn't work.
 
 ### Credits to:
 - DeltaReckoner
