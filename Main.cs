@@ -13,7 +13,7 @@ public class Main : Plugin<Config>
     public override string Name => "Wireless-Keycards";
     public override string Description => "Allows the usage of Wireless keycards";
     public override string Author => "Kenley M.";
-    public override Version Version => new(1, 1, 6);
+    public override Version Version => new(1, 1, 7);
     public override Version RequiredApiVersion => new(LabApiProperties.CompiledVersion);
     public string githubRepo = "KenleyundLeon/Wireless-Keycards";
 
